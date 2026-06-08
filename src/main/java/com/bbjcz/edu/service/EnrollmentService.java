@@ -1,5 +1,6 @@
 package com.bbjcz.edu.service;
 
+import com.bbjcz.edu.dto.AvailableClassDTO;
 import com.bbjcz.edu.mapper.EnrollmentMapper;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,7 @@ public class EnrollmentService {
         return result > 0;
     }
 
-    public List<Integer> getAvailableClassIdsForStudent(Integer uid) {
-        return enrollmentMapper.getUnenrolledClassIdsByStudentId(uid);
+    public List<AvailableClassDTO> getAvailableClassIdsForStudent(Integer uid) {
+        return enrollmentMapper.getUnenrolledClassesByStudentId(uid);
     }
 }

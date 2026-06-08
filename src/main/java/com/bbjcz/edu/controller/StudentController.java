@@ -1,5 +1,6 @@
 package com.bbjcz.edu.controller;
 
+import com.bbjcz.edu.dto.CreatedStudentDTO;
 import com.bbjcz.edu.entity.Student;
 import com.bbjcz.edu.service.StudentService;
 import jakarta.servlet.http.HttpSession;
@@ -26,7 +27,7 @@ public class StudentController {
     }
 
     @PostMapping
-    public Integer insertStudent(@RequestBody Student student, HttpSession session) {
+    public CreatedStudentDTO insertStudent(@RequestBody Student student, HttpSession session) {
         if (session.getAttribute("isAdmin") == null
                 || !(boolean) session.getAttribute("isAdmin")) {
             return null;

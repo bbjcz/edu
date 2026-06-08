@@ -516,3 +516,109 @@
   }
 ]
 ```
+
+## 2026-06-08 API 变更说明
+
+以下内容是相对于上文原 API 文档的追加变更说明，原有接口路径不变。
+
+### 新增学生接口返回值变更
+
+`POST /api/student`
+
+请求体不变：
+
+```json
+{
+  "name": "new student"
+}
+```
+
+原返回值：新增学生 id。
+
+现变更为：学生创建成功后，系统会自动创建对应的学生用户，默认密码仍为 `password`。
+
+新返回值：
+
+```json
+{
+  "user_id": 10,
+  "student_id": 1
+}
+```
+
+### 新增教师接口返回值变更
+
+`POST /api/teacher`
+
+请求体不变：
+
+```json
+{
+  "name": "new teacher"
+}
+```
+
+原返回值：新增教师 id。
+
+现变更为：教师创建成功后，系统会自动创建对应的教师用户，默认密码仍为 `password`。
+
+新返回值：
+
+```json
+{
+  "user_id": 11,
+  "teacher_id": 1
+}
+```
+
+### 管理员查询全部班级返回值变更
+
+`GET /api/class/all`
+
+原返回值只包含班级 id、课程 id、教师 id：
+
+```json
+[
+  {
+    "id": 1,
+    "course_id": 1,
+    "teacher_id": 1
+  }
+]
+```
+
+现返回值增加课程名和教师名：
+
+```json
+[
+  {
+    "id": 1,
+    "course_id": 1,
+    "course_name": "it",
+    "teacher_id": 1,
+    "teacher_name": "xf"
+  }
+]
+```
+
+### 学生查询可选课时返回值变更
+
+`GET /api/enrollment/available`
+
+原返回值只包含可选班级 id：
+
+```json
+[1, 2, 3]
+```
+
+现返回值增加课程名和教师名：
+
+```json
+[
+  {
+    "class_id": 1,
+    "course_name": "it",
+    "teacher_name": "xf"
+  }
+]
+```

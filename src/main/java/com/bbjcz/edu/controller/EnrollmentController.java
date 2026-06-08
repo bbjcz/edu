@@ -1,5 +1,6 @@
 package com.bbjcz.edu.controller;
 
+import com.bbjcz.edu.dto.AvailableClassDTO;
 import com.bbjcz.edu.service.EnrollmentService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.*;
@@ -34,7 +35,7 @@ public class EnrollmentController {
     }
 
     @GetMapping("/available")
-    public List<Integer> getAvailableClassIdsForStudent(HttpSession session) {
+    public List<AvailableClassDTO> getAvailableClassIdsForStudent(HttpSession session) {
         Integer uid = (Integer) session.getAttribute("id");
         if (uid == null) {
             return null;

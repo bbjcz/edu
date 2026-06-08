@@ -1,5 +1,6 @@
 package com.bbjcz.edu.service;
 
+import com.bbjcz.edu.dto.ClassAdminDTO;
 import com.bbjcz.edu.dto.ClassDTO;
 import com.bbjcz.edu.dto.ClassDetailDTO;
 import com.bbjcz.edu.entity.EduClass;
@@ -16,7 +17,7 @@ public class ClassService {
         this.classMapper = classMapper;
     }
 
-    public List<EduClass> getAllClasses() {
+    public List<ClassAdminDTO> getAllClasses() {
         return classMapper.getAllClasses();
     }
 

@@ -1,5 +1,6 @@
 package com.bbjcz.edu.controller;
 
+import com.bbjcz.edu.dto.ClassAdminDTO;
 import com.bbjcz.edu.dto.ClassDTO;
 import com.bbjcz.edu.dto.ClassDetailDTO;
 import com.bbjcz.edu.entity.EduClass;
@@ -19,7 +20,7 @@ public class ClassController {
     }
 
     @GetMapping("/all")
-    public List<EduClass> getAllClasses(HttpSession session) {
+    public List<ClassAdminDTO> getAllClasses(HttpSession session) {
         if (session.getAttribute("isAdmin") == null
                 || !(boolean) session.getAttribute("isAdmin")) {
             return null;

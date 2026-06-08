@@ -1,5 +1,6 @@
 package com.bbjcz.edu.mapper;
 
+import com.bbjcz.edu.dto.ClassAdminDTO;
 import com.bbjcz.edu.dto.ClassDTO;
 import com.bbjcz.edu.dto.ClassInfoDTO;
 import com.bbjcz.edu.dto.ClassScoreDTO;
@@ -13,8 +14,14 @@ import java.util.List;
 
 @Mapper
 public interface ClassMapper {
-    @Select("select id, course_id, teacher_id from class")
-    List<EduClass> getAllClasses();
+    @Select("""
+            select class.id, class.course_id, course.name course_name,
+                   class.teacher_id, teacher.name teacher_name
+            from class
+            join course on class.course_id = course.id
+            join teacher on class.teacher_id = teacher.id
+            """)
+    List<ClassAdminDTO> getAllClasses();
 
     @Select("""
             insert into class (course_id, teacher_id)

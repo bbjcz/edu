@@ -1,5 +1,6 @@
 package com.bbjcz.edu.mapper;
 
+import com.bbjcz.edu.dto.AvailableClassDTO;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -27,8 +28,10 @@ public interface EnrollmentMapper {
     int unenrollStudentFromClass(Integer uid, Integer classId);
 
     @Select("""
-            select class.id class_id
+            select class.id class_id, course.name course_name, teacher.name teacher_name
             from class
+            join course on class.course_id = course.id
+            join teacher on class.teacher_id = teacher.id
             cross join users
             where users.id = #{uid} and users.role = 'student'
             and class.course_id not in (
@@ -38,5 +41,5 @@ public interface EnrollmentMapper {
                 where enrollment.student_id = users.student_id
             )
             """)
-    List<Integer> getUnenrolledClassIdsByStudentId(Integer uid);
+    List<AvailableClassDTO> getUnenrolledClassesByStudentId(Integer uid);
 }
