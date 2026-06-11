@@ -85,7 +85,7 @@ for each row
 execute procedure update_score();
 
 create view student_score as
-select users.id uid, course.name course_name,
+select users.id uid, class.id class_id, course.name course_name,
 teacher.name teacher_name, course.point, enrollment.score
 from class join enrollment on enrollment.class_id = class.id
 join course on class.course_id = course.id

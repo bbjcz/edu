@@ -622,3 +622,28 @@
   }
 ]
 ```
+
+## 2026-06-11 API 变更说明
+
+### 查询当前学生成绩返回值变更
+
+`GET /api/me/score`
+
+原返回值中的每条课程成绩不包含班级 id。
+
+现返回值中的每条课程成绩增加 `class_id`：
+
+```json
+{
+  "student_score_list": [
+    {
+      "class_id": 1,
+      "course_name": "it",
+      "teacher_name": "xf",
+      "point": 2,
+      "score": 88
+    }
+  ],
+  "average_score": 88.0
+}
+```

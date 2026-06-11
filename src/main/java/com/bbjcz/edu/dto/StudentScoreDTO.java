@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class StudentScoreDTO {
+    private Integer classId;
     private String courseName;
     private String teacherName;
     private Integer point;

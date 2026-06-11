@@ -22,7 +22,8 @@ public interface MeMapper {
     MeDTO getMeById(Integer uid);
 
     @Select("""
-            select course.name course_name, teacher.name teacher_name, course.point, enrollment.score
+            select class.id class_id, course.name course_name, teacher.name teacher_name,
+                   course.point, enrollment.score
             from users
             join enrollment on users.student_id = enrollment.student_id
             join class on enrollment.class_id = class.id
